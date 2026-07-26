@@ -1,0 +1,90 @@
+{
+  "account_bpa": {
+    "BlockPublicAcls": false,
+    "IgnorePublicAcls": false,
+    "BlockPublicPolicy": false,
+    "RestrictPublicBuckets": false
+  },
+  "buckets": [
+    {
+      "name": "public-website-assets",
+      "region": "us-east-1",
+      "acl_grants": [
+        {
+          "grantee_uri": "http://acs.amazonaws.com/groups/global/AllUsers",
+          "permission": "READ"
+        }
+      ],
+      "policy": null,
+      "bucket_bpa": null
+    },
+    {
+      "name": "open-policy-datalake",
+      "region": "eu-west-1",
+      "acl_grants": [],
+      "policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Sid": "PublicRead",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::open-policy-datalake/*"
+          }
+        ]
+      },
+      "bucket_bpa": null
+    },
+    {
+      "name": "cdn-origin-ip-locked",
+      "region": "us-east-1",
+      "acl_grants": [],
+      "policy": {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Sid": "IpGated",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::cdn-origin-ip-locked/*",
+            "Condition": {
+              "IpAddress": { "aws:SourceIp": "203.0.113.0/24" }
+            }
+          }
+        ]
+      },
+      "bucket_bpa": null
+    },
+    {
+      "name": "legacy-acl-but-bpa-on",
+      "region": "us-west-2",
+      "acl_grants": [
+        {
+          "grantee_uri": "http://acs.amazonaws.com/groups/global/AllUsers",
+          "permission": "READ"
+        }
+      ],
+      "policy": null,
+      "bucket_bpa": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      }
+    },
+    {
+      "name": "private-app-state",
+      "region": "us-east-1",
+      "acl_grants": [],
+      "policy": null,
+      "bucket_bpa": {
+        "BlockPublicAcls": true,
+        "IgnorePublicAcls": true,
+        "BlockPublicPolicy": true,
+        "RestrictPublicBuckets": true
+      }
+    }
+  ]
+}
