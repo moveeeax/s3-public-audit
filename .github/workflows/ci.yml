@@ -41,5 +41,11 @@ jobs:
 
       - name: Smoke (JSON + SARIF)
         run: |
+          set +e
           python -m s3_public_audit scan --input examples/buckets.json --format json
+          json=$?
           python -m s3_public_audit scan --input examples/buckets.json --format sarif
+          sarif=$?
+          set -e
+          test "$json" -eq 2
+          test "$sarif" -eq 2
