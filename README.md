@@ -104,3 +104,7 @@ make smoke
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+---
+
+**Archived on 2026-11-05.** Prowler (s3_bucket_public_access, plus BPA and access point checks) and AWS IAM Access Analyzer already find public buckets with more vectors; the only angle here is a small offline explainer with a remediation plan, which is thin.
