@@ -4,10 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "s3-public-audit"
-version = "0.1.0"
+version = "0.2.0"
 description = "Scan S3 buckets for public exposure (ACLs, policies, Block Public Access) and produce a remediation plan."
 readme = "README.md"
-requires-python = ">=3.9"
+requires-python = ">=3.11"
 license = { text = "MIT" }
 authors = [{ name = "Michael Tarassov", email = "michael@tarassov.me" }]
 keywords = ["aws", "s3", "security", "audit", "compliance", "boto3", "cloud", "devops"]
@@ -17,8 +17,8 @@ classifiers = [
     "Topic :: Security",
 ]
 dependencies = [
-    "boto3>=1.26",
-    "rich>=13.0",
+    "boto3>=1.43",
+    "rich>=15.0",
 ]
 
 [project.optional-dependencies]
